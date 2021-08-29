@@ -157,7 +157,6 @@ export const promoteEmployee = (tree: TreeNode, employeeName: string) => {
 	reorganizeSubordinates(bossNode, employeeNode, true);
 	console.log(`[promoteEmployee]: Promoted ${employeeName} and made ${bossNode.name} his subordinate
     `);
-	console.log(bossNode, employeeNode);
 	return employeeNode;
 };
 
@@ -172,18 +171,12 @@ export const promoteEmployee = (tree: TreeNode, employeeName: string) => {
  */
 
 export const demoteEmployee = (tree: TreeNode, employeeName: string, subordinateName: string) => {
-	const bossNode: TreeNode = getBoss(tree, subordinateName, employeeName);
-	if (bossNode.name !== employeeName)
-		throw new Error('subordinate provided is not a subordinate of the boss provided');
-
-	bossNode.subordinates.forEach((subordinate: TreeNode) => {
-		if (subordinate.name === subordinateName) {
-			reorganizeSubordinates(subordinate, bossNode, true);
-			bossNode.boss = subordinate;
-			return;
-		}
-	});
-
+	const replaced: TreeNode = findEmployee(tree, employeeName).cur;
+	const replacer: TreeNode = findEmployee(tree, subordinateName).cur;
+	const bossBoss = replaced.boss;
+	reorganizeSubordinates(replaced, replacer, true);
+	replacer.boss = bossBoss;
+	replaced.boss = replacer;
 	console.log(`[demoteEmployee]: Demoted employee (demoted ${employeeName} and replaced with ${subordinateName})
     `);
 };

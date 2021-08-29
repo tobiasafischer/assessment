@@ -48,8 +48,13 @@ export const getBoss = (tree: TreeNode, employeeName: string, bossName: string) 
  * @returns {TreeNode[]}
  */
 export const getSubordinates = (tree: TreeNode, employeeName: string) => {
+	const subs = [];
 	const subordinates = findEmployee(tree, employeeName).cur.subordinates;
-	console.log(`[getSubordinate]: ${employeeName}'s subordinates are ${subordinates}`);
+	subordinates.forEach((sub) => {
+		subs.push(` ${sub.name}`);
+	});
+
+	console.log(`[getSubordinate]: ${employeeName}'s subordinates are ${subs}`);
 	return subordinates;
 };
 

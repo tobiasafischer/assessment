@@ -13,14 +13,21 @@ import { Employee } from './types';
 function main() {
 	const tree = generateCompanyStructure(employees as Array<Employee>);
 	const employeeToHire: Employee = {
-		name: 'Tobias',
+		name: 'Jeb',
 		jobTitle: 'CTO',
 		boss: 'Sarah',
 		salary: '0',
 	};
+	console.log('\n\n\n\n\n\n\n\n');
 	hireEmployee(tree, employeeToHire, 'Sarah');
-	fireEmployee(tree, 'Xavier');
-	promoteEmployee(tree, 'Nick');
+	fireEmployee(tree, 'Alicia');
+	promoteEmployee(tree, 'Jared');
+
+	demoteEmployee(tree, 'Xavier', 'Maria');
+	console.log('\n');
+	getBoss(tree, 'Bill', 'Jared');
+	getSubordinates(tree, 'Maria');
+	console.log('\n');
 }
 
 main();
