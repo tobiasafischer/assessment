@@ -41,7 +41,7 @@ fireEmployee - This uses findEmployee which is O(|V|) as well as uses reorganize
 
 promoteEmployee - This uses findEmployee which is O(|V|) as well as uses reorganizeSubordinates which is in this case O(2n)
 
-demoteEmployee - This uses getBoss O(|V|) then traverses through the subordinates of the boss (worst case O(n)) then once it finds the correct subordinate, we use reorganizeSubordinates which in this case is O(2n)
+demoteEmployee - This uses findEmployee twice O(|V|), then uses reorganizeSubordinates which in this case is O(2n)
 
 Bonus: There are two functions that have very similar logic and could be merged into one. Which functions do you think can be merged and why?
 
