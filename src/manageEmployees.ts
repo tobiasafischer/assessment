@@ -155,7 +155,7 @@ export const promoteEmployee = (tree: TreeNode, employeeName: string) => {
 	const employeeNode: TreeNode = findEmployee(tree, employeeName).cur;
 	const bossNode = employeeNode.boss;
 	reorganizeSubordinates(bossNode, employeeNode, true);
-	console.log(`[promoteEmployee]: Promoted ${employeeName} and made ${bossNode.name} his subordinate
+	console.log(`[promoteEmployee]: Promoted ${employeeName} and made ${bossNode.name} their subordinate
     `);
 	return employeeNode;
 };
